@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "HookupLookup"
+    }
+  },
+  "defaultProject": "HookupLookup",
+  "cli": {
+    "analytics": "0f1f45a6-9aae-4226-8065-ccabf8b606a5"
+  }
 }
