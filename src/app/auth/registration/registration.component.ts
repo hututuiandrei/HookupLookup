@@ -22,4 +22,8 @@ export class RegistrationComponent implements OnInit {
     this.auth.createUser(frm.value);
   }
 
+  back() {
+
+    this.auth.back();
+  }
 }

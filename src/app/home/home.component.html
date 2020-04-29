@@ -1,1 +1,13 @@
-<p>home works!</p>
+<div class="container">
+    <h1>Home Page</h1>
+    <hr>
+
+    <div *ngIf="user">
+    <p>Logged in as: {{ user?.email }}</p>
+    <p>Welcome back {{ user?.displayName }} !</p>
+    </div>
+
+    <button class="btn btn-primary mr-2" *ngIf="!user" (click)="register()">Register</button>
+    <button class="btn btn-primary" *ngIf="user" (click)="logout()">Logout</button>
+    <button class="btn btn-primary" *ngIf="!user" (click)="login()">Login</button>
+</div>

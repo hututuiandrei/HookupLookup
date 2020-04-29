@@ -24,8 +24,8 @@ export class AuthService {
     return this.afAuth.authState;
   }
 
-  login( email: string, password: string) {
-    this.afAuth.signInWithEmailAndPassword(email, password)
+  login(user) {
+    this.afAuth.signInWithEmailAndPassword(user.email, user.password)
       .catch(error => {
         this.eventAuthError.next(error);
       })
@@ -52,6 +52,8 @@ export class AuthService {
           });
       })
       .catch( error => {
+
+        console.log(error);
         this.eventAuthError.next(error);
       });
   }
@@ -67,5 +69,10 @@ export class AuthService {
 
   logout() {
     return this.afAuth.signOut();
+  }
+
+  back() {
+
+    this.router.navigate(['/home']);
   }
 }
