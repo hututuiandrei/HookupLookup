@@ -10,16 +10,29 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
 
   user: firebase.User;
+  quest: any;
 
   constructor(private auth: AuthService,
     private router: Router) { }
 
   ngOnInit() {
+
+    console.log('adasdad');
+
     this.auth.getUserState()
     .subscribe (user => {
 
+      console.log(user)
       this.user = user;
-    }) 
+
+      if(user) {
+
+        this.auth.getUserData(user).subscribe( userData => {
+
+          this.quest = userData.get('questionnaire');
+        });
+      }
+    }); 
   }
 
   register() {

@@ -1,23 +1,23 @@
-<form #userRegForm="ngForm" (ngSubmit)="login(userRegForm)">
-    <div class="container">
-        <h1>Sign In</h1>
-        <hr>
+<form ngNativeValidate #userRegForm="ngForm" (ngSubmit)="login(userRegForm)">
+    <h1>Sign In</h1>
+    <hr>
 
-        <div *ngIf="authError">
-            <div class="alert alert-danger">
-                {{ authError?.message }}
-            </div>
+    <div *ngIf="authError" style="color: red">
+        <div>
+            {{ authError?.message }}
         </div>
+    </div>
 
+    <p>
         <label for="email"><b>Email</b></label>
-        <input ngModel #email="ngModel" name="email" type="email" class="form-control" required>
-
+        <input ngModel #email="ngModel" name="email" type="email" required/>
+    </p>
+    <p>
         <label for="psw"><b>Password</b></label>
-        <input ngModel #password="ngModel" name="password" type="password" class="form-control" required>
-
-        <div class="clearfix">
-            <button type="button" class="cancelbtn" (click) = "back()">Cancel</button>
-            <button type="submit" class="signupbtn">Sign In</button>
-        </div>
+        <input ngModel #password="ngModel" name="password" type="password" required/>
+    </p>
+    <div>
+        <button type="button" (click) = "back()">Cancel</button>
+        <button type="submit">Sign In</button>
     </div>
 </form>

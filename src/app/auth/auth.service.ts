@@ -24,6 +24,10 @@ export class AuthService {
     return this.afAuth.authState;
   }
 
+  getUserData(user){
+    return this.db.doc(`Users/${user.uid}`).get();
+  }
+
   login(user) {
     this.afAuth.signInWithEmailAndPassword(user.email, user.password)
       .catch(error => {
@@ -32,13 +36,14 @@ export class AuthService {
       .then(userCredential => {
         if(userCredential) {
           this.router.navigate(['/home']);
+          this.eventAuthError.next('');
         }
       })
   }
 
   createUser(user) {
     console.log(user);
-    this.afAuth.createUserWithEmailAndPassword( user.email, user.password)
+    this.afAuth.createUserWithEmailAndPassword(user.email, user.password)
       .then( userCredential => {
         this.newUser = user;
         console.log(userCredential);
@@ -48,8 +53,9 @@ export class AuthService {
 
         this.insertUserData(userCredential)
           .then(() => {
-            this.router.navigate(['/home']);
-          });
+          this.router.navigate(['/questionnaire']);
+          this.eventAuthError.next('');
+        });
       })
       .catch( error => {
 
@@ -63,7 +69,34 @@ export class AuthService {
       email: this.newUser.email,
       firstname: this.newUser.firstName,
       lastname: this.newUser.lastName,
-      role: 'network user'
+      questionnaire: null
+    })
+  }
+
+  submit(quest) {
+
+    this.afAuth.currentUser
+      .then( user => {
+        this.updateQuestionnaire(user.uid, quest)
+          .then(() => {
+
+            this.router.navigate(['/home']);
+            this.eventAuthError.next('');
+          });
+      })
+      .catch( error => {
+        this.eventAuthError.next(error);
+      });
+  }
+
+  updateQuestionnaire(uid: String, quest) {
+
+    return this.db.doc(`Users/${uid}`).update({
+      questionnaire: {
+
+        fruit: quest.fruit,
+        car: quest.car
+      }
     })
   }
 
