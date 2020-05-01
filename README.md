@@ -1,8 +1,13 @@
+# Uitati-va la videoclipul asta ca sa intelegeti cum sta treaba cu aplicatia pana in momentul asta :
+# https://www.youtube.com/watch?v=mArXOf0daQ4&t=1434s
+# Nu va intereseaza prea mult partea de Firebase, este deja initializat totul pe contul meu.
+# Btw, eu am rulat toate comenzile in CMD, daca folositi Linux s-ar putea sa apara probleme
+
 # HookupLookup
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.3.
 
-## Development server
+## Development server (Asta e importanta !!!! restul n-am folosit)
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
