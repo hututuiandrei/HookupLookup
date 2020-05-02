@@ -9,10 +9,10 @@ import { AuthService } from '../auth.service';
 export class RegistrationComponent implements OnInit {
 
   authError: any;
-
   constructor(private auth: AuthService) { }
 
   ngOnInit() {
+    this.auth.clearErr();
     this.auth.eventAuthError$.subscribe( data => {
       this.authError = data;
     })

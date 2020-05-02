@@ -36,7 +36,6 @@ export class AuthService {
       .then(userCredential => {
         if(userCredential) {
           this.router.navigate(['/home']);
-          this.eventAuthError.next('');
         }
       })
   }
@@ -54,12 +53,10 @@ export class AuthService {
         this.insertUserData(userCredential)
           .then(() => {
           this.router.navigate(['/questionnaire']);
-          this.eventAuthError.next('');
         });
       })
       .catch( error => {
 
-        console.log(error);
         this.eventAuthError.next(error);
       });
   }
@@ -73,15 +70,12 @@ export class AuthService {
     })
   }
 
-  submit(quest) {
-
+  submit(quest, score) {
     this.afAuth.currentUser
       .then( user => {
-        this.updateQuestionnaire(user.uid, quest)
+        this.updateQuestionnaire(user.uid, quest, score)
           .then(() => {
-
             this.router.navigate(['/home']);
-            this.eventAuthError.next('');
           });
       })
       .catch( error => {
@@ -89,15 +83,16 @@ export class AuthService {
       });
   }
 
-  updateQuestionnaire(uid: String, quest) {
-
+  updateQuestionnaire(uid: String, quest, score) {
+    
     return this.db.doc(`Users/${uid}`).update({
-      questionnaire: {
-
-        fruit: quest.fruit,
-        car: quest.car
-      }
+      questionnaire: quest,
+      score: score
     })
+  }
+
+  clearErr() {
+    this.eventAuthError.next('');
   }
 
   logout() {

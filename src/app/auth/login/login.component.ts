@@ -9,10 +9,10 @@ import { AuthService } from '../auth.service';
 export class LoginComponent implements OnInit {
 
   authError: any;
-
   constructor(private auth: AuthService) { }
 
   ngOnInit() {
+    this.auth.clearErr();
     this.auth.eventAuthError$.subscribe( data => {
       this.authError = data;
     })
@@ -23,7 +23,6 @@ export class LoginComponent implements OnInit {
   }
 
   back() {
-
     this.auth.back();
   }
 

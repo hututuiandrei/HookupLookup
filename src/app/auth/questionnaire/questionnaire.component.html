@@ -1,4 +1,4 @@
-<form ngNativeValidate #questionnaireForm="ngForm" (ngSubmit)="submit(questionnaireForm)">
+<form ngNativeValidate (ngSubmit)="submit()">
     <div>
         <h1>Answer this questions</h1>
         <hr>
@@ -9,26 +9,12 @@
             </div>
         </div>
 
-        <p>
-            <label for="fruit"><b>Favourite fruit : </b></label>
-            <select ngModel #fruit="ngModel" id="fruit" name="fruit" required>
-                <option value="Apple">Apple</option>
-                <option value="Pear">Pear</option>
-                <option value="Banana">Banana</option>
-                <option value="Strawberry">Strawberry</option>
+        <p *ngFor = "let form of forms; index as i">
+            <label for="form"><b>{{ form.question }}</b></label>
+            <select [(ngModel)]=form.selAnswer id="res" name="res" required>
+                <option *ngFor="let answer of form.answers" value={{answer}}>{{ answer }}</option>
             </select>
         </p>
-
-        <p>
-            <label for="car"><b>Favourite car : </b></label>
-            <select ngModel #car="ngModel" id="car" name="car" required>
-                <option value="BMW">BMW</option>
-                <option value="Skoda">Skoda</option>
-                <option value="Mercedes">Mercedes</option>
-                <option value="Audi">Audi</option>
-            </select>
-        </p>
-
         <div>
             <button type="submit" class="signupbtn">Submit</button>
         </div>

@@ -17,14 +17,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
 
-    console.log('adasdad');
-
     this.auth.getUserState()
     .subscribe (user => {
 
-      console.log(user)
       this.user = user;
-
       if(user) {
 
         this.auth.getUserData(user).subscribe( userData => {
