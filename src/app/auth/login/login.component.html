@@ -1,5 +1,7 @@
-<form ngNativeValidate #userRegForm="ngForm" (ngSubmit)="login(userRegForm)">
-    <h1>Sign In</h1>
+<body>
+<div class = "login">
+<form  ngNativeValidate #userRegForm="ngForm" (ngSubmit)="login(userRegForm)">
+    <h1>Login</h1>
     <hr>
 
     <div *ngIf="authError" style="color: red">
@@ -8,16 +10,18 @@
         </div>
     </div>
 
-    <p>
-        <label for="email"><b>Email</b></label>
-        <input ngModel #email="ngModel" name="email" type="email" required/>
-    </p>
-    <p>
-        <label for="psw"><b>Password</b></label>
-        <input ngModel #password="ngModel" name="password" type="password" required/>
-    </p>
+    <div class="form-group">
+        <label for="email"></label>
+        <input ngModel #email="ngModel" name="email" type="email" placeholder = "Email" required/>
+    </div>
+    <div class="form-group">
+        <label for="psw"></label>
+        <input ngModel #password="ngModel" name="password" type="password" required placeholder="Password"/>
+    </div>
     <div>
-        <button type="button" (click) = "back()">Cancel</button>
-        <button type="submit">Sign In</button>
+        <button type="button" (click) = "back()" class="btn btn-primary btn-block btn-large cancel">Cancel</button>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Let me in</button>
     </div>
 </form>
+</div>
+</body>

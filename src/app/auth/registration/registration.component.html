@@ -1,3 +1,4 @@
+
 <form ngNativeValidate #userRegForm="ngForm" (ngSubmit)="createUser(userRegForm)">
   <div>
     <h1>Sign Up</h1>
@@ -10,40 +11,49 @@
       </div>
     </div>
 
-    <p>
-    <label for="email"><b>Email</b></label>
-    <input ngModel #email="ngModel" name="email" type="email" required/>
-    </p>
+    <div class="form-group">
+      <label for="firstName"><b>First Name  </b></label>
+      <input ngModel #firstname="ngModel" placeholder="Enter your First Name" name="firstName" type="text" id="firstName" required style="width: 300px"/>
+    </div>
+    
+    <div class="form-group">
+      <label for="lastName"> <b>Last Name  </b></label>
+      <input ngModel #lastname="ngModel"  placeholder="Enter your Last Name" name="lastName" type="text" id="lastName" required style="width: 300px"/>
+    </div>
 
-    <p>
+    <div class="form-group">
+      <label for="email"><b>Email Address</b></label>
+      <input ngModel #email="ngModel" name="email" type="email" placeholder="Enter your email" required style="width: 300px"/>
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+
+    <div class="form-group">
     <label for="psw"><b>Password</b></label>
-    <input ngModel #password="ngModel" name="password" type="password" required/>
-    </p>
+    <input ngModel #password="ngModel" placeholder="Enter your Password" name="password" type="password" required style="width: 300px"/>
+    </div>
 
-    <p>
+    <div class="form-group">
     <label for="psw-repeat"><b>Repeat Password</b></label>
-    <input type="password" placeholder="Repeat Password" name="psw-repeat" required/>
-    </p>
-
-    <p>
-    <label for="firstName"><b>First Name</b></label>
-    <input ngModel #firstname="ngModel" name="firstName" type="text" id="firstName" required/>
-    </p>
-
-    <p>
-    <label for="lastName"><b>Last Name</b></label>
-    <input ngModel #lastname="ngModel" name="lastName" type="text" id="lastName" required/>
-    </p>
-
-    <label>
-      <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-    </label>
-
-    <p>By creating an account you agree to our <a href="https://www.pornhub.com/" style="color:dodgerblue">Terms & Privacy</a>.</p>
+    <input type="password" placeholder="Repeat your Password" name="psw-repeat" required style="width: 300px"/>
+    </div>
 
     <div>
-      <button type="button" (click) = "back()">Cancel</button>
-      <button type="submit">Sign Up</button>
+    <label class="check-btn">
+    Remember me <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> 
+    </label>
+    </div>
+
+    <div>
+    <label class="check-btn">
+    I am over 18 years old <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> 
+    </label>
+    </div>
+
+    <p class="terms">By creating an account you agree to our <a href="https://www.pornhub.com/" style="color:dodgerblue">Terms & Privacy</a>.</p>
+
+    <div>
+      <button class = "btn" id = "cancel-btn" type="button" (click) = "back()">Cancel</button>
+      <button class = "btn" id = "sign-btn" type="submit"><span>Sign Up</span></button>
     </div>
   </div>
 </form>

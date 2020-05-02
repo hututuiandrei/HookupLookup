@@ -1,0 +1,22 @@
+.form-group {
+    display: grid;
+}
+.btn {
+    float: left;
+}
+
+#cancel-btn {
+    background-color: red;
+    transition-duration: 0.4s;
+    color: white;
+    border-radius: 110px;
+}
+#sign-btn {
+    background-color: green;
+    transition-duration: 0.4s;
+    color: white;
+    border-radius: 110px;
+}
+#cancel-btn:hover,#sign-btn:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  }

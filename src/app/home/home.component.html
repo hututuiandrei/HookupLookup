@@ -19,8 +19,8 @@
         <button (click)="logout()">Logout</button>
     </div>
 
-    <div *ngIf="!user">
-        <button (click)="register()">Register</button>
-        <button (click)="login()">Login</button>
+    <div *ngIf="!user" class= "btn-group">
+        <button class = "btn" id = "reg-btn" (click)="register()">Register</button>
+        <button class = "btn" id = "login-btn" (click)="login()">Login</button>
     </div>
 </div>
