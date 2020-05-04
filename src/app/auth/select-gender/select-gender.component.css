@@ -1,0 +1,44 @@
+.all {
+    position: absolute;
+    width: 300px;
+    height: 200px;
+    z-index: 15;
+    top: 50%;
+    left: 50%;
+    margin: -100px 0 0 -150px;
+  }
+p {
+    text-align: justify;
+}
+.btn-group .btn {
+    border: 1px solid black;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .btn-group .btn:not(:last-child) {
+    border-right: none; 
+  }
+
+  a {
+      color: inherit;
+  }
+
+  .men {
+      background-color: rgb(45, 45, 98);
+  }
+  .men:hover {
+      background-color: darkblue;
+  }
+
+  .women {
+      background-color: pink;
+  }
+  .women:hover {
+      background-color: palevioletred;
+  }

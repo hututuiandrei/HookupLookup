@@ -9,7 +9,7 @@
             </div>
         </div>
 
-        <p *ngFor = "let form of formsBoys; index as i">
+        <p *ngFor = "let form of formBoys; index as i">
             <label for="form"><b>{{ form.question }}</b></label>
             <select [(ngModel)]=form.selAnswer id="res" name="res" required>
                 <option *ngFor="let answer of form.answers" value={{answer}}>{{ answer }}</option>

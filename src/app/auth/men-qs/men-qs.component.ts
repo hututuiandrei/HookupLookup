@@ -1,33 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { Formular } from '../questionnaire/formular';
 import { AuthService } from '../auth.service';
-import { Formular } from './formular';
 
 @Component({
-  selector: 'app-questionnaire',
-  templateUrl: './questionnaire.component.html',
-  styleUrls: ['./questionnaire.component.css']
+  selector: 'app-men-qs',
+  templateUrl: './men-qs.component.html',
+  styleUrls: ['./men-qs.component.css']
 })
-
-export class QuestionnaireComponent implements OnInit {
+export class MenQsComponent implements OnInit {
 
   authError: any;
   constructor(private auth: AuthService) { }
-
-  formsBoys = [
-    new Formular('Scapi o cutie cu lapte de la scoala pe podea, cutia s-a spart' + 
-    ' si cateva picaturi de lapte au sarit pe fata Mariei. Esti ok cu acest lucru ??', ['Da', 'Nu']),
-    new Formular('Iei alta cutie, dar esti neatent din nou, si picaturi de lapte' +
-    'sar pe toata Maria. Esti ok cu acest lucru ??', ['Da', 'Nu']),
-    new Formular('Vrei sa intri in curtea Mariei si vezi doua intrari, una vopsita' +
-    'cu roz si una cu maro, ti-ar placea sa intri pe amandoua?', ['Da', 'Nu']),
-    new Formular('Ti-ar placea sa intri doar pe poarta roz ?', ['Da', 'Nu']),
-    new Formular('Ti-ar placea sa intri doar pe poarta maro ?', ['Da', 'Nu']),
-    new Formular('Iti plac caprele ?', ['Da', 'Nu']),
-    new Formular('Iti place sa faci misiuni, vrei sa fii un misionar ?', ['Da', 'Nu']),
-    new Formular('69 este numarul tau norocos ? ', ['Da', 'Nu']),
-    new Formular('Parul din curtea Mariei are multe crengi, ti-ar placea sa tragi de ele ?', ['Da', 'Nu']),
-  ]
-
+  
   formGirls = [
     new Formular('Dorel a scapat o cutie de lapte pe jos. Cateva picaturi ti-au' + 
     'sarit pe fata, esti ok cu asta ?', ['Da', 'Nu']),
@@ -67,12 +51,13 @@ export class QuestionnaireComponent implements OnInit {
   }
 
   submit() {
-    var selAnswers = this.getSelAnswers(this.formsBoys);
-    var score = this.calculateScore(this.formsBoys, selAnswers);
+    var selAnswers = this.getSelAnswers(this.formGirls);
+    var score = this.calculateScore(this.formGirls, selAnswers);
     this.auth.submit(selAnswers, score);
   }
 
   back() {
     this.auth.back();
   }
+
 }

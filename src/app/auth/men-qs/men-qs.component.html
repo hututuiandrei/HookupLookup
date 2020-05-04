@@ -1,0 +1,22 @@
+<form ngNativeValidate (ngSubmit)="submit()">
+    <div>
+        <h1>Answer this questions</h1>
+        <hr>
+
+        <div *ngIf="authError">
+            <div>
+                {{ authError?.message }}
+            </div>
+        </div>
+
+        <p *ngFor = "let form of formGirls; index as i">
+            <label for="form"><b>{{ form.question }}</b></label>
+            <select [(ngModel)]=form.selAnswer id="res" name="res" required>
+                <option *ngFor="let answer of form.answers" value={{answer}}>{{ answer }}</option>
+            </select>
+        </p>
+        <div>
+            <button type="submit" class="signupbtn">Submit</button>
+        </div>
+    </div>
+</form>

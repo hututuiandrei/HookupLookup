@@ -12,7 +12,9 @@ import { environment } from 'src/environments/environment';
 import { RegistrationComponent } from './auth/registration/registration.component';
 import { LoginComponent } from './auth/login/login.component';
 import { HomeComponent } from './home/home.component';
-import { QuestionnaireComponent } from './auth/questionnaire/questionnaire.component';
+import { SelectGenderComponent } from './auth/select-gender/select-gender.component';
+import { MenQsComponent } from './auth/men-qs/men-qs.component';
+import { WomenQsComponent } from './auth/women-qs/women-qs.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { QuestionnaireComponent } from './auth/questionnaire/questionnaire.compo
     RegistrationComponent,
     LoginComponent,
     HomeComponent,
-    QuestionnaireComponent
+    SelectGenderComponent,
+    MenQsComponent,
+    WomenQsComponent
   ],
   imports: [
     BrowserModule,
@@ -32,5 +36,6 @@ import { QuestionnaireComponent } from './auth/questionnaire/questionnaire.compo
   ],
   providers: [],
   bootstrap: [AppComponent]
+  
 })
 export class AppModule { }
