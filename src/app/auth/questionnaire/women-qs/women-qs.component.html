@@ -9,14 +9,14 @@
             </div>
         </div>
 
-        <p *ngFor = "let form of formGirls; index as i">
+        <div *ngFor = "let form of formGirls" class="form-group">
             <label for="form"><b>{{ form.question }}</b></label>
             <select [(ngModel)]=form.selAnswer id="res" name="res" required>
                 <option *ngFor="let answer of form.answers" value={{answer}}>{{ answer }}</option>
             </select>
-        </p>
+        </div>
         <div>
-            <button type="submit" class="signupbtn">Submit</button>
+            <button type="submit" id="submit-btn">Submit</button>
         </div>
     </div>
 </form>

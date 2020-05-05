@@ -1,0 +1,11 @@
+.form-group {
+    display: grid;
+    width: 50%;
+}
+
+#submit-btn {
+    background-color: green;
+    transition-duration: 0.4s;
+    color: white;
+    border-radius: 110px;
+}
