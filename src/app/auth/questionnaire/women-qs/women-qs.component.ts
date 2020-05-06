@@ -13,16 +13,19 @@ export class WomenQsComponent implements OnInit {
   constructor(private auth: AuthService) { }
 
   formGirls = [
-    new Formular('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', ['Da', 'Nu']),
-    new Formular('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', ['Da', 'Nu']),
-    new Formular('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', ['Da', 'Nu']),
-    new Formular('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', ['Da', 'Nu']),
-    new Formular('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', ['Da', 'Nu']),
-    new Formular('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', ['Da', 'Nu']),
-    new Formular('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', ['Da', 'Nu']),
-    new Formular('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', ['Da', 'Nu']),
-    new Formular('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', ['Da', 'Nu']),
+    new Formular('Dorel a scapat o cutie de lapte pe jos. Cateva picaturi ti-au ' + 
+    'sarit pe fata, esti ok cu asta ?', ['Da', 'Nu']),
+    new Formular('Dorel e neatent si ii scapa din nou cutia, de data aceasta esti ' + 
+    'plina de lapte pe corp, esti ok cu asta ?', ['Da', 'Nu']),
+    new Formular('Dorel vrea sa intre in curtea ta si observa cele doua intrari, ' + 
+    'este ok daca intra pe amandoua ??', ['Da', 'Nu']),
+    new Formular('Ti-ar placea sa intre doar pe una din porti?', ['Da', 'Nu']),
+    new Formular('Anul acesta de Halloween poti sa te deghizezi intr-o caprita, ti-ar placea asta ', ['Da', 'Nu']),
+    new Formular('Iti place sa faci misiuni, vrei sa fii o misionara ?', ['Da', 'Nu']),
+    new Formular('69 este numarul tau norocos ? ', ['Da', 'Nu']),
+    new Formular('Dorel vrea sa traga parul din curtea ta de crengi, esti ok cu asta ?', ['Da', 'Nu']),
   ]
+  
 
   getSelAnswers(forms: Formular[]) {
     var res = new Array();
