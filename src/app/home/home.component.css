@@ -1,6 +1,39 @@
+
+.text {
+  background-color: teal;
+  font-family: 'Times New Roman', Times, serif;
+  color: #070707;;
+  text-align: center;
+}
+.completeHere {
+  background-color: teal;
+}
+.textPosition {
+  position: absolute;
+	top: 35%;
+	left: 38%;
+	margin: -5% 0 0 -5%;
+	width:30%;
+  height:25%;
+  background-color: rgba(255, 255, 255, 80%);
+  font-family: 'Times New Roman', Times, serif;
+  color: #070707;;
+  text-align: center;
+}
+
+.buttonsPosition { 
+	position: absolute;
+	top: 50%;
+	left: 50%;
+  margin: -5% 0 0 -10%;
+	width: 30%;
+	height:30%;
+}
+
 .btn-group .btn {
-    background-color: #2a3461; /* Green */
-    border: 1px solid black;
+  
+    background-color: #9c0094; /* Green */
+    border: 2px solid rgb(0, 0, 0);
     color: white;
     padding: 15px 32px;
     text-align: center;
@@ -9,11 +42,12 @@
     font-size: 16px;
     cursor: pointer;
     float: left;
+    
   }
   .btn-group .btn:not(:last-child) {
     border-right: none; 
   }
 
   .btn-group .btn:hover {
-    background-color: #3752cc;
+    background-color: #ff009d;
   }

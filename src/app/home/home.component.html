@@ -1,26 +1,38 @@
-<div>
-    <h1>Home Page</h1>
-    <hr>
+<!DOCTYPE html>
+<html>
 
-    <div *ngIf="user">
-        <p>Logged in as: {{ user?.email }}</p>
-        <p>Welcome back {{ user?.displayName }} !</p>
+<body>
+    <div>
+        <div *ngIf="user">
+            <p>Logged in as: {{ user?.email }}</p>
+            <p>Welcome back {{ user?.displayName }} !</p>
 
-        <div *ngIf="quest">
+            <div *ngIf="quest">
+                Formular complet
+            </div>
 
-            Formular complet
+            <div *ngIf="!quest">
+                N-ai completat formularul!
+            </div>
+
+            <button (click)="logout()">Logout</button>
         </div>
-
-        <div *ngIf="!quest">
-
-            NAI COMPLETAT FORMULARRR
+        <div *ngIf="!user" class="completeHere">
+            <div *ngIf="!user" class="textPosition">
+                <h1>The adventure starts tonight</h1>
+                <h4>Start connecting with people from your area! If you already have an account, login to
+                    start.</h4>
+            </div>
+            <div *ngIf="!user" class="buttonsPosition">
+                <div *ngIf="!user" class="btn-group">
+                    <button class="btn" id="reg-btn" (click)="register()">Register</button>
+                    <button class="btn" id="login-btn" (click)="login()">Login</button>
+                </div>
+            </div>
         </div>
-
-        <button (click)="logout()">Logout</button>
+        <div *ngIf="!user">
+        </div>
     </div>
+</body>
 
-    <div *ngIf="!user" class= "btn-group">
-        <button class = "btn" id = "reg-btn" (click)="register()">Register</button>
-        <button class = "btn" id = "login-btn" (click)="login()">Login</button>
-    </div>
-</div>
+</html>
