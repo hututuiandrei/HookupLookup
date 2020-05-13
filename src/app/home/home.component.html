@@ -9,6 +9,10 @@
 
             <div *ngIf="quest">
                 Formular complet
+
+                <div *ngFor = "let lover of lovers">
+                    {{ lover.lastname }} {{ lover.firstname }}: {{ lover.message }}
+                </div>
             </div>
 
             <div *ngIf="!quest">
@@ -18,19 +22,17 @@
             <button (click)="logout()">Logout</button>
         </div>
         <div *ngIf="!user" class="completeHere">
-            <div *ngIf="!user" class="textPosition">
+            <div class="textPosition">
                 <h1>The adventure starts tonight</h1>
                 <h4>Start connecting with people from your area! If you already have an account, login to
                     start.</h4>
             </div>
-            <div *ngIf="!user" class="buttonsPosition">
-                <div *ngIf="!user" class="btn-group">
+            <div class="buttonsPosition">
+                <div class="btn-group">
                     <button class="btn" id="reg-btn" (click)="register()">Register</button>
                     <button class="btn" id="login-btn" (click)="login()">Login</button>
                 </div>
             </div>
-        </div>
-        <div *ngIf="!user">
         </div>
     </div>
 </body>

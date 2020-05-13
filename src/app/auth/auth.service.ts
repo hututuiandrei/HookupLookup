@@ -13,8 +13,6 @@ export class AuthService {
   private eventAuthError = new BehaviorSubject<string>("");
   eventAuthError$ = this.eventAuthError.asObservable();
 
-  newUser: any;
-
   constructor(
     private afAuth: AngularFireAuth,
     private db: AngularFirestore,
@@ -26,6 +24,11 @@ export class AuthService {
 
   getUserData(user){
     return this.db.doc(`Users/${user.uid}`).get();
+  }
+
+  getInbox(user) {
+
+    return this.db.collection(`Users/${user.uid}/Inbox`).valueChanges();
   }
 
   login(user) {
@@ -41,16 +44,14 @@ export class AuthService {
   }
 
   createUser(user) {
-    console.log(user);
     this.afAuth.createUserWithEmailAndPassword(user.email, user.password)
       .then( userCredential => {
-        this.newUser = user;
-        console.log(userCredential);
+        var newUser = user;
         userCredential.user.updateProfile( {
           displayName: user.firstName + ' ' + user.lastName
         });
 
-        this.insertUserData(userCredential)
+        this.insertUserData(userCredential, newUser)
           .then(() => {
           this.router.navigate(['/select-gender']);
         });
@@ -61,13 +62,15 @@ export class AuthService {
       });
   }
 
-  insertUserData(userCredential: firebase.auth.UserCredential) {
+  insertUserData(userCredential: firebase.auth.UserCredential, newUser: any) {
+
     return this.db.doc(`Users/${userCredential.user.uid}`).set({
-      email: this.newUser.email,
-      firstname: this.newUser.firstName,
-      lastname: this.newUser.lastName,
+      email: newUser.email,
+      firstname: newUser.firstName,
+      lastname: newUser.lastName,
+      sex: newUser.gender,
       questionnaire: null
-    })
+    });
   }
 
   submit(quest, score) {
@@ -75,6 +78,21 @@ export class AuthService {
       .then( user => {
         this.updateQuestionnaire(user.uid, quest, score)
           .then(() => {
+            this.db.doc(`Users/${user.uid}`).ref.get()
+              .then(userdata => {
+                this.db.collection("Users").ref
+                .where("score", "==", score)
+                .where("sex", "==", this.getOppositeSex(userdata.data().sex))
+                .get()
+                  .then(querry => {
+                    querry.forEach(doc => {
+                      if(doc.id != user.uid) {
+                        this.insertLover(user.uid, doc.id, doc.data().firstname, doc.data().lastname);
+                        this.insertLover(doc.id, user.uid, userdata.data().firstname, userdata.data().lastname)
+                      }
+                  })
+                });
+              });
             this.router.navigate(['/home']);
           });
       })
@@ -84,11 +102,19 @@ export class AuthService {
   }
 
   updateQuestionnaire(uid: String, quest, score) {
-    
     return this.db.doc(`Users/${uid}`).update({
       questionnaire: quest,
       score: score
-    })
+    });
+  }
+  
+  insertLover(uid: String, loverId: String, loverFirstName: String, loverLastName: String) {
+    this.db.doc(`Users/${uid}/Inbox/${loverId}`).set({
+
+      firstname: loverFirstName,
+      lastname: loverLastName,
+      message: ""
+    });
   }
 
   clearErr() {
@@ -96,11 +122,19 @@ export class AuthService {
   }
 
   logout() {
+
     return this.afAuth.signOut();
   }
 
   back() {
-
     this.router.navigate(['/home']);
+  }
+
+  private getOppositeSex(sex: String) {
+
+    if(sex == "male")
+      return "female";
+    else 
+      return "male";
   }
 }
