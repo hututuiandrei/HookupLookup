@@ -4,22 +4,25 @@
 <body>
     <div>
         <div *ngIf="user">
+            <button (click)="logout()">Logout</button>
             <p>Logged in as: {{ user?.email }}</p>
             <p>Welcome back {{ user?.displayName }} !</p>
 
-            <div *ngIf="quest">
-                Formular complet
-
+            <div *ngIf="quest" style="overflow-y:scroll; height: 75vh; width: 30vw;">
                 <div *ngFor = "let lover of lovers">
-                    {{ lover.lastname }} {{ lover.firstname }}: {{ lover.message }}
+                    <div class="container">
+                        <p>You : {{ lover.sentMessage }}</p>
+                        <p>{{ lover.lastname }} {{ lover.firstname }}: {{ lover.message }}</p>
+                        <input #message placeholder="Reply..." type="text" required/>
+                        <button (click)="sendMessage(lover, message.value); message.value=''">Send</button>
+                        <span class="time-right">11:00</span>
+                      </div>
                 </div>
             </div>
 
             <div *ngIf="!quest">
                 N-ai completat formularul!
             </div>
-
-            <button (click)="logout()">Logout</button>
         </div>
         <div *ngIf="!user" class="completeHere">
             <div class="textPosition">

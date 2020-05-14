@@ -15,14 +15,10 @@ export class SelectGenderComponent implements OnInit {
   ngOnInit(): void {}
 
   choseMen() {
-
-    console.log("men")
     this.router.navigate(['/womenqs']);
   }
 
   choseWomen() {
-
-    console.log("women")
     this.router.navigate(['/menqs'])
   }
 

@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit, OnDestroy{
   lovers: {};
   private subUser: Subscription;
   private subInbox: Subscription;
+  msg: String;
 
   constructor(private auth: AuthService,
     private router: Router) { }
@@ -42,6 +43,11 @@ export class HomeComponent implements OnInit, OnDestroy{
 
   ngOnDestroy() {
     this.subUser.unsubscribe();
+  }
+
+  sendMessage(lover, message: String) {
+
+    this.auth.sendMessage(lover, message);
   }
 
   register() {
