@@ -27,8 +27,7 @@ export class AuthService {
   }
 
   getInbox(user) {
-
-    return this.db.collection(`Users/${user.uid}/Inbox`).valueChanges();
+    return this.db.collection(`Users/${user.uid}/Inbox`).valueChanges({idField: 'id'});
   }
 
   login(user) {
@@ -113,7 +112,21 @@ export class AuthService {
 
       firstname: loverFirstName,
       lastname: loverLastName,
-      message: ""
+      message: "",
+      sentMessage: ""
+    });
+  }
+
+  sendMessage(lover, message: String) {
+    this.afAuth.currentUser
+      .then( user => {
+
+        this.db.doc(`Users/${lover.id}/Inbox/${user.uid}`).update({
+          message: message
+        });
+        this.db.doc(`Users/${user.uid}/Inbox/${lover.id}`).update({
+          sentMessage: message
+        });
     });
   }
 
