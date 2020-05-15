@@ -71,3 +71,72 @@
     clear: both;
     display: table;
   }
+
+  #usr {
+    font-weight: bold;
+    float: right;
+    margin-right: 10px;
+  }
+
+#wb {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-left: 60px;
+}
+
+#chat {
+  background-color: rgba(255, 255, 255, 60%);
+}
+
+#lgbtn {
+  background-color: rgba(151, 45, 45, 0.8);
+  border-radius: 2em;
+  width: 100px;
+}
+
+#sendbtn {
+  display: inline-block;
+  padding: 7px 15px;
+  font-size: 12px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 4.5px #999;
+  margin-left: 10px;
+}
+
+#sendbtn:hover {background-color: #3e8e41}
+
+#sendbtn:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+#inp {
+  border: black;
+  border-radius: 2em;
+  border-style: solid;
+  padding-left: 10px;
+}
+
+#sg {
+    display: inline-block;
+    padding: 7px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color:black;
+    background-color: rgba(243, 119, 243, 0.6);
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4.5px #999;
+}

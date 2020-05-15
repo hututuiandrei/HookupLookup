@@ -4,24 +4,39 @@
 <body>
     <div>
         <div *ngIf="user">
-            <button (click)="logout()">Logout</button>
-            <p>Logged in as: {{ user?.email }}</p>
-            <p>Welcome back {{ user?.displayName }} !</p>
 
-            <div *ngIf="quest" style="overflow-y:scroll; height: 75vh; width: 30vw;">
+            <p id = "usr">
+                Logged in as: {{ user?.email }}
+            <button id = "lgbtn" (click)="logout()">Logout</button>
+            </p>
+
+            <div id = "wb">
+                <div>
+                Welcome back {{ user?.displayName }} !
+                </div>
+                <div>
+                Let's have a bit of fun, shall we?
+                </div>
+            </div>
+            <div  *ngIf="quest" style="overflow-y:scroll; height: 75vh; width: 30vw;">
                 <div *ngFor = "let lover of lovers">
-                    <div class="container">
+                    <div id = "chat" class="container">
                         <p>You : {{ lover.sentMessage }}</p>
                         <p>{{ lover.lastname }} {{ lover.firstname }}: {{ lover.message }}</p>
-                        <input #message placeholder="Reply..." type="text" required/>
-                        <button (click)="sendMessage(lover, message.value); message.value=''">Send</button>
-                        <span class="time-right">11:00</span>
+                        <input #message placeholder="Reply..." type="text" required id = "inp" autocomplete="off"/>
+                        <button (click)="sendMessage(lover, message.value); message.value=''" id = "sendbtn" > Send </button>
+                        <span class="time-right" style="color: black; font-weight: bold;">11:00</span>
                       </div>
                 </div>
             </div>
 
-            <div *ngIf="!quest">
-                N-ai completat formularul!
+            <div *ngIf="!quest" style="margin-top: 30px;">
+                <div style="margin-left: 60px; font-weight: bold;">
+                Your profile is not complete...
+                </div>
+                <div style="margin-left: 60px;">
+                    <button routerLink="/select-gender" id = "sg" >Press here to complete your registration</button>
+                </div>
             </div>
         </div>
         <div *ngIf="!user" class="completeHere">
