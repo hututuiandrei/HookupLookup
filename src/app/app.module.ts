@@ -16,6 +16,11 @@ import { SelectGenderComponent } from './auth/questionnaire/select-gender/select
 import { MenQsComponent } from './auth/questionnaire/men-qs/men-qs.component';
 import { WomenQsComponent } from './auth/questionnaire/women-qs/women-qs.component';
 
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+ 
+import { ToastrModule } from 'ngx-toastr';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +37,9 @@ import { WomenQsComponent } from './auth/questionnaire/women-qs/women-qs.compone
     AppRoutingModule,
     AngularFireModule.initializeApp( environment.firebaseConfig ),
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

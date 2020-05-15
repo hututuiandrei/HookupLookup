@@ -120,7 +120,6 @@ export class AuthService {
   sendMessage(lover, message: String) {
     this.afAuth.currentUser
       .then( user => {
-
         this.db.doc(`Users/${lover.id}/Inbox/${user.uid}`).update({
           message: message
         });

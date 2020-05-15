@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-home',
@@ -15,12 +16,19 @@ export class HomeComponent implements OnInit, OnDestroy{
   lovers: {};
   private subUser: Subscription;
   private subInbox: Subscription;
-  msg: String;
+  private pastLength: number;
+  private canToast: boolean;
 
-  constructor(private auth: AuthService,
-    private router: Router) { }
+
+  constructor(
+    private auth: AuthService,
+    private router: Router,
+    private toastr: ToastrService) { }
+
   ngOnInit() {
     
+    this.pastLength = -1;
+  
     this.subUser = this.auth.getUserState()
     .subscribe (user => {
 
@@ -31,7 +39,18 @@ export class HomeComponent implements OnInit, OnDestroy{
         this.subInbox = this.auth.getInbox(this.user).
         subscribe( inbox => {
 
+          if(this.pastLength >= 0 && this.canToast) {
+            if(inbox.length == this.pastLength) {
+              this.toastr.info('You received a new message',
+              '', {positionClass:'toast-top-left'});
+            } else {
+              this.toastr.warning('You have a new match',
+              '', {positionClass:'toast-top-left'});
+            }
+          }
           this.lovers = inbox;
+          this.pastLength = inbox.length;
+          this.canToast = true;
           });      
         });
       } else {
@@ -47,21 +66,19 @@ export class HomeComponent implements OnInit, OnDestroy{
 
   sendMessage(lover, message: String) {
 
+    this.canToast = false;
     this.auth.sendMessage(lover, message);
   }
 
   register() {
-
     this.router.navigate(['/register']);
   }
 
   login() {
-
     this.router.navigate(['/login']);
   }
 
   logout() {
-
     this.auth.logout();
   }
 }
